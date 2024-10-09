@@ -1,0 +1,26 @@
+# Flutter/Dart specific
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+# Flutter/Dart package configurations
+.pub-cache/
+.pub/
+# iOS specific
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+# Android specific
+android/.gradle/
+android/app/*.keystore
+android/app/google-services.json
+android/key.properties
+android/local.properties
+# VSCode specific
+.vscode/
+# Intellij specific
+.idea/
+*.iml

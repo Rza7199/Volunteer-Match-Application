@@ -1,0 +1,15 @@
+# Define the first submodule
+[submodule "libs/external-lib"]
+  path = libs/external-lib
+  url = https://github.com/username/external-lib.git
+
+# Define the second submodule
+[submodule "themes/custom-theme"]
+  path = themes/custom-theme
+  url = https://github.com/username/custom-theme.git
+  branch = stable
+
+# Define a submodule with a relative URL (if it's hosted in the same server or repo)
+[submodule "plugins/my-plugin"]
+  path = plugins/my-plugin
+  url = ../my-plugin.git

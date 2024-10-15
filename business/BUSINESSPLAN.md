@@ -28,3 +28,5 @@ The operations of VolunteerMatch are managed by a small, agile team of developer
 ---
 
 _This document serves as an overview of the key components of the VolunteerMatch business model. Detailed projections and further planning can be developed later.
+
+[Lean Canvas](https://drive.google.com/file/d/1h321-CpTKPGCS1n5WGsnNIGxciS8o-GC/view?usp=sharing)

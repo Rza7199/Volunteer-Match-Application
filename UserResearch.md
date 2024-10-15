@@ -43,3 +43,22 @@
 
 Overall, users value **personalization**, **convenience**, and **transparency** in a volunteer matching app, with a strong focus on **location** and **ease of use**.
 
+# User Research Observation 3: Jimmy  
+
+## Participant Demographics
+- **Age Group**: demographic focus - 18-25.
+- **Gender**: Majority were male.
+- **Occupation**: Majority were students.
+
+## Community Service Participation
+- a majority of the survey taker responded with Never at 45% , follow by Occasionally at 41%
+  
+## Desired Features
+- no premium 
+- organization profile.
+  
+## Short Answer Feedback
+- advanced filtering
+- search feature based on user’s location
+- easy and simple UI, where user can scroll through the page
+

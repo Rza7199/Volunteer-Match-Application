@@ -28,4 +28,4 @@ Respectful communication is key. We will work better as a group if we all stay o
 Enforcement of these rules will be decided by majority vote. Feedback is encouraged, and all opinions should be heard before making any decisions.
 
 ## Signatures
-- (Adam's Signature)[https://prnt.sc/lsAdPeVP_AFU]
+- [Adam's Signature](https://prnt.sc/lsAdPeVP_AFU)

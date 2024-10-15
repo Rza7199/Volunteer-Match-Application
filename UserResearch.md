@@ -47,18 +47,18 @@ Overall, users value **personalization**, **convenience**, and **transparency** 
 
 ## Participant Demographics
 - **Age Group**: demographic focus - 18-25.
-- **Gender**: Majority were male.
+- **Gender**: Heavy skewer towards male.
 - **Occupation**: Majority were students.
 
 ## Community Service Participation
-- a majority of the survey taker responded with Never at 45% , follow by Occasionally at 41%
+- a Majority of the survey taker responded with Never at 45% , follow by Occasionally at 41%
   
 ## Desired Features
-- no premium 
-- organization profile.
+- No **premium** 
+- **organization profile**.
   
 ## Short Answer Feedback
-- advanced filtering
-- search feature based on user’s location
-- easy and simple UI, where user can scroll through the page
+- Advanced filtering
+- Search feature based on user’s location
+- Easy and simple UI, where user can scroll through the page
 

@@ -32,3 +32,4 @@ Enforcement of these rules will be decided by majority vote. Feedback is encoura
 - [Rami's Signature](https://prnt.sc/haOlB2Lx-AFE)
 - [Ryan's Signature](https://prnt.sc/PgvwCTDsu4k4)
 - [Redwan's Signature](https://prnt.sc/e2Z_uTbsvtXt)
+- [Jimmy's Signature](https://acrobat.adobe.com/id/urn:aaid:sc:us:c67e046c-ae18-4f95-bd41-468e470eb94e)

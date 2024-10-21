@@ -89,6 +89,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'LoggedIn',
           path: '/loggedIn',
           builder: (context, params) => const LoggedInWidget(),
+        ),
+        FFRoute(
+          name: 'DUMMYPAGE',
+          path: '/dummypage',
+          builder: (context, params) => const DummypageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

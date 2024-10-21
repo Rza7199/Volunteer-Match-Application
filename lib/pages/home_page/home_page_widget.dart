@@ -30,8 +30,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
-    _model.emailLoginTextController ??= TextEditingController();
-    _model.emailLoginFocusNode ??= FocusNode();
+    _model.emailLoginTextController1 ??= TextEditingController();
+    _model.emailLoginFocusNode1 ??= FocusNode();
+
+    _model.passwordsignupTextController ??= TextEditingController();
+    _model.passwordsignupFocusNode ??= FocusNode();
+
+    _model.cnfrmpassSignupTextController ??= TextEditingController();
+    _model.cnfrmpassSignupFocusNode ??= FocusNode();
+
+    _model.emailLoginTextController2 ??= TextEditingController();
+    _model.emailLoginFocusNode2 ??= FocusNode();
 
     _model.passwordLoginTextController ??= TextEditingController();
     _model.passwordLoginFocusNode ??= FocusNode();
@@ -74,6 +83,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       height: 450.0,
+                      constraints: const BoxConstraints(
+                        minHeight: double.infinity,
+                      ),
                       decoration: const BoxDecoration(
                         shape: BoxShape.rectangle,
                       ),
@@ -103,7 +115,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                               tabs: const [
                                 Tab(
-                                  text: 'SignUp',
+                                  text: 'Sign Up',
                                 ),
                                 Tab(
                                   text: 'Log In',
@@ -119,9 +131,485 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             child: TabBarView(
                               controller: _model.tabBarController,
                               children: [
-                                const Column(
+                                Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  children: [],
+                                  children: [
+                                    Form(
+                                      key: _model.formKey,
+                                      autovalidateMode:
+                                          AutovalidateMode.disabled,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 30.0, 0.0, 0.0),
+                                            child: SizedBox(
+                                              width: 300.0,
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .emailLoginTextController1,
+                                                focusNode:
+                                                    _model.emailLoginFocusNode1,
+                                                onChanged: (_) =>
+                                                    EasyDebounce.debounce(
+                                                  '_model.emailLoginTextController1',
+                                                  const Duration(milliseconds: 2000),
+                                                  () => safeSetState(() {}),
+                                                ),
+                                                onFieldSubmitted: (_) async {
+                                                  GoRouter.of(context)
+                                                      .prepareAuthEvent();
+
+                                                  final user = await authManager
+                                                      .signInWithEmail(
+                                                    context,
+                                                    _model
+                                                        .emailLoginTextController1
+                                                        .text,
+                                                    _model
+                                                        .passwordsignupTextController
+                                                        .text,
+                                                  );
+                                                  if (user == null) {
+                                                    return;
+                                                  }
+
+                                                  context.goNamedAuth(
+                                                      'LoggedIn',
+                                                      context.mounted);
+                                                },
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  hintText: 'Email Address...',
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0xFF110606),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0xFF040303),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  contentPadding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(24.0, 26.0,
+                                                              25.0, 26.0),
+                                                  suffixIcon: _model
+                                                          .emailLoginTextController1!
+                                                          .text
+                                                          .isNotEmpty
+                                                      ? InkWell(
+                                                          onTap: () async {
+                                                            _model
+                                                                .emailLoginTextController1
+                                                                ?.clear();
+                                                            safeSetState(() {});
+                                                          },
+                                                          child: const Icon(
+                                                            Icons.clear,
+                                                            size: 30.0,
+                                                          ),
+                                                        )
+                                                      : null,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                cursorColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                validator: _model
+                                                    .emailLoginTextController1Validator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300.0,
+                                            child: TextFormField(
+                                              controller: _model
+                                                  .passwordsignupTextController,
+                                              focusNode: _model
+                                                  .passwordsignupFocusNode,
+                                              autofocus: true,
+                                              obscureText: !_model
+                                                  .passwordsignupVisibility,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                hintText: 'Password...',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF0B0A0A),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF0B0A0A),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                contentPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(25.0, 26.0,
+                                                            25.0, 26.0),
+                                                suffixIcon: InkWell(
+                                                  onTap: () => safeSetState(
+                                                    () => _model
+                                                            .passwordsignupVisibility =
+                                                        !_model
+                                                            .passwordsignupVisibility,
+                                                  ),
+                                                  focusNode: FocusNode(
+                                                      skipTraversal: true),
+                                                  child: Icon(
+                                                    _model.passwordsignupVisibility
+                                                        ? Icons
+                                                            .visibility_outlined
+                                                        : Icons
+                                                            .visibility_off_outlined,
+                                                    size: 30.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              validator: _model
+                                                  .passwordsignupTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300.0,
+                                            child: TextFormField(
+                                              controller: _model
+                                                  .cnfrmpassSignupTextController,
+                                              focusNode: _model
+                                                  .cnfrmpassSignupFocusNode,
+                                              autofocus: true,
+                                              obscureText: !_model
+                                                  .cnfrmpassSignupVisibility,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                hintText: 'Confirm Password...',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF0B0A0A),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF0B0A0A),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          14.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                contentPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(25.0, 26.0,
+                                                            25.0, 26.0),
+                                                suffixIcon: InkWell(
+                                                  onTap: () => safeSetState(
+                                                    () => _model
+                                                            .cnfrmpassSignupVisibility =
+                                                        !_model
+                                                            .cnfrmpassSignupVisibility,
+                                                  ),
+                                                  focusNode: FocusNode(
+                                                      skipTraversal: true),
+                                                  child: Icon(
+                                                    _model.cnfrmpassSignupVisibility
+                                                        ? Icons
+                                                            .visibility_outlined
+                                                        : Icons
+                                                            .visibility_off_outlined,
+                                                    size: 30.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              validator: _model
+                                                  .cnfrmpassSignupTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ].divide(const SizedBox(height: 10.0)),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 150.0, 0.0, 0.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          if (_model.formKey.currentState ==
+                                                  null ||
+                                              !_model.formKey.currentState!
+                                                  .validate()) {
+                                            return;
+                                          }
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          if (_model
+                                                  .passwordsignupTextController
+                                                  .text !=
+                                              _model
+                                                  .cnfrmpassSignupTextController
+                                                  .text) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Passwords don\'t match!',
+                                                ),
+                                              ),
+                                            );
+                                            return;
+                                          }
+
+                                          final user = await authManager
+                                              .createAccountWithEmail(
+                                            context,
+                                            _model
+                                                .emailLoginTextController1.text,
+                                            _model.passwordsignupTextController
+                                                .text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: const Text('T'),
+                                                content: const Text(
+                                                    'Thank you for creating an account!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          context.pushNamedAuth(
+                                              'DUMMYPAGE', context.mounted);
+                                        },
+                                        text: 'Sign Up',
+                                        options: FFButtonOptions(
+                                          width: 300.0,
+                                          height: 60.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: const Color(0xFFE45454),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Inter Tight',
+                                                    color: Colors.black,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.black,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(const SizedBox(height: 10.0)),
                                 ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -135,11 +623,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         width: 300.0,
                                         child: TextFormField(
                                           controller:
-                                              _model.emailLoginTextController,
-                                          focusNode: _model.emailLoginFocusNode,
+                                              _model.emailLoginTextController2,
+                                          focusNode:
+                                              _model.emailLoginFocusNode2,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.emailLoginTextController',
+                                            '_model.emailLoginTextController2',
                                             const Duration(milliseconds: 2000),
                                             () => safeSetState(() {}),
                                           ),
@@ -150,7 +639,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             final user = await authManager
                                                 .signInWithEmail(
                                               context,
-                                              _model.emailLoginTextController
+                                              _model.emailLoginTextController2
                                                   .text,
                                               _model.passwordLoginTextController
                                                   .text,
@@ -226,13 +715,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 26.0, 25.0, 26.0),
                                             suffixIcon: _model
-                                                    .emailLoginTextController!
+                                                    .emailLoginTextController2!
                                                     .text
                                                     .isNotEmpty
                                                 ? InkWell(
                                                     onTap: () async {
                                                       _model
-                                                          .emailLoginTextController
+                                                          .emailLoginTextController2
                                                           ?.clear();
                                                       safeSetState(() {});
                                                     },
@@ -253,7 +742,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               FlutterFlowTheme.of(context)
                                                   .primaryText,
                                           validator: _model
-                                              .emailLoginTextControllerValidator
+                                              .emailLoginTextController2Validator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -373,7 +862,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               await authManager.signInWithEmail(
                                             context,
                                             _model
-                                                .emailLoginTextController.text,
+                                                .emailLoginTextController2.text,
                                             _model.passwordLoginTextController
                                                 .text,
                                           );

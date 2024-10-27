@@ -21,6 +21,7 @@ class _DummypageWidgetState extends State<DummypageWidget> {
     super.initState();
     _model = createModel(context, () => DummypageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'DUMMYPAGE'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

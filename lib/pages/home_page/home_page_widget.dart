@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -25,13 +26,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
       initialIndex: 0,
     )..addListener(() => safeSetState(() {}));
-    _model.emailLoginTextController1 ??= TextEditingController();
-    _model.emailLoginFocusNode1 ??= FocusNode();
+    _model.emailSignUpTextController ??= TextEditingController();
+    _model.emailSignUpFocusNode ??= FocusNode();
 
     _model.passwordsignupTextController ??= TextEditingController();
     _model.passwordsignupFocusNode ??= FocusNode();
@@ -39,8 +41,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
     _model.cnfrmpassSignupTextController ??= TextEditingController();
     _model.cnfrmpassSignupFocusNode ??= FocusNode();
 
-    _model.emailLoginTextController2 ??= TextEditingController();
-    _model.emailLoginFocusNode2 ??= FocusNode();
+    _model.emailLoginTextController ??= TextEditingController();
+    _model.emailLoginFocusNode ??= FocusNode();
 
     _model.passwordLoginTextController ??= TextEditingController();
     _model.passwordLoginFocusNode ??= FocusNode();
@@ -149,16 +151,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               width: 300.0,
                                               child: TextFormField(
                                                 controller: _model
-                                                    .emailLoginTextController1,
+                                                    .emailSignUpTextController,
                                                 focusNode:
-                                                    _model.emailLoginFocusNode1,
+                                                    _model.emailSignUpFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.emailLoginTextController1',
+                                                  '_model.emailSignUpTextController',
                                                   const Duration(milliseconds: 2000),
                                                   () => safeSetState(() {}),
                                                 ),
                                                 onFieldSubmitted: (_) async {
+                                                  logFirebaseEvent(
+                                                      'HOME_EmailSignUp_ON_TEXTFIELD_SUBMIT');
+                                                  logFirebaseEvent(
+                                                      'EmailSignUp_auth');
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
 
@@ -166,7 +172,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       .signInWithEmail(
                                                     context,
                                                     _model
-                                                        .emailLoginTextController1
+                                                        .emailSignUpTextController
                                                         .text,
                                                     _model
                                                         .passwordsignupTextController
@@ -257,13 +263,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           .fromSTEB(24.0, 26.0,
                                                               25.0, 26.0),
                                                   suffixIcon: _model
-                                                          .emailLoginTextController1!
+                                                          .emailSignUpTextController!
                                                           .text
                                                           .isNotEmpty
                                                       ? InkWell(
                                                           onTap: () async {
                                                             _model
-                                                                .emailLoginTextController1
+                                                                .emailSignUpTextController
                                                                 ?.clear();
                                                             safeSetState(() {});
                                                           },
@@ -285,7 +291,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 validator: _model
-                                                    .emailLoginTextController1Validator
+                                                    .emailSignUpTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -522,12 +528,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 150.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          logFirebaseEvent(
+                                              'HOME_PAGE_PAGE_LoginButton_ON_TAP');
+                                          logFirebaseEvent(
+                                              'LoginButton_validate_form');
                                           if (_model.formKey.currentState ==
                                                   null ||
                                               !_model.formKey.currentState!
                                                   .validate()) {
                                             return;
                                           }
+                                          logFirebaseEvent('LoginButton_auth');
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
                                           if (_model
@@ -551,7 +562,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .createAccountWithEmail(
                                             context,
                                             _model
-                                                .emailLoginTextController1.text,
+                                                .emailSignUpTextController.text,
                                             _model.passwordsignupTextController
                                                 .text,
                                           );
@@ -559,6 +570,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             return;
                                           }
 
+                                          await UserInfoRecord.collection
+                                              .doc(user.uid)
+                                              .update(createUserInfoRecordData(
+                                                email: _model
+                                                    .emailSignUpTextController
+                                                    .text,
+                                              ));
+
+                                          logFirebaseEvent(
+                                              'LoginButton_alert_dialog');
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
@@ -577,6 +598,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               );
                                             },
                                           );
+                                          logFirebaseEvent(
+                                              'LoginButton_navigate_to');
 
                                           context.pushNamedAuth(
                                               'DUMMYPAGE', context.mounted);
@@ -623,23 +646,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         width: 300.0,
                                         child: TextFormField(
                                           controller:
-                                              _model.emailLoginTextController2,
-                                          focusNode:
-                                              _model.emailLoginFocusNode2,
+                                              _model.emailLoginTextController,
+                                          focusNode: _model.emailLoginFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.emailLoginTextController2',
+                                            '_model.emailLoginTextController',
                                             const Duration(milliseconds: 2000),
                                             () => safeSetState(() {}),
                                           ),
                                           onFieldSubmitted: (_) async {
+                                            logFirebaseEvent(
+                                                'HOME_EmailLogin_ON_TEXTFIELD_SUBMIT');
+                                            logFirebaseEvent('EmailLogin_auth');
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
 
                                             final user = await authManager
                                                 .signInWithEmail(
                                               context,
-                                              _model.emailLoginTextController2
+                                              _model.emailLoginTextController
                                                   .text,
                                               _model.passwordLoginTextController
                                                   .text,
@@ -715,13 +740,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 26.0, 25.0, 26.0),
                                             suffixIcon: _model
-                                                    .emailLoginTextController2!
+                                                    .emailLoginTextController!
                                                     .text
                                                     .isNotEmpty
                                                 ? InkWell(
                                                     onTap: () async {
                                                       _model
-                                                          .emailLoginTextController2
+                                                          .emailLoginTextController
                                                           ?.clear();
                                                       safeSetState(() {});
                                                     },
@@ -742,7 +767,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               FlutterFlowTheme.of(context)
                                                   .primaryText,
                                           validator: _model
-                                              .emailLoginTextController2Validator
+                                              .emailLoginTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -855,6 +880,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0.0, 150.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          logFirebaseEvent(
+                                              'HOME_PAGE_PAGE_LoginButton_ON_TAP');
+                                          logFirebaseEvent('LoginButton_auth');
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
 
@@ -862,7 +890,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               await authManager.signInWithEmail(
                                             context,
                                             _model
-                                                .emailLoginTextController2.text,
+                                                .emailLoginTextController.text,
                                             _model.passwordLoginTextController
                                                 .text,
                                           );

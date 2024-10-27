@@ -21,6 +21,7 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
     super.initState();
     _model = createModel(context, () => LoggedInModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'LoggedIn'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

@@ -11,10 +11,10 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for EmailLogin widget.
-  FocusNode? emailLoginFocusNode1;
-  TextEditingController? emailLoginTextController1;
-  String? Function(BuildContext, String?)? emailLoginTextController1Validator;
+  // State field(s) for EmailSignUp widget.
+  FocusNode? emailSignUpFocusNode;
+  TextEditingController? emailSignUpTextController;
+  String? Function(BuildContext, String?)? emailSignUpTextControllerValidator;
   // State field(s) for Passwordsignup widget.
   FocusNode? passwordsignupFocusNode;
   TextEditingController? passwordsignupTextController;
@@ -28,9 +28,9 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   String? Function(BuildContext, String?)?
       cnfrmpassSignupTextControllerValidator;
   // State field(s) for EmailLogin widget.
-  FocusNode? emailLoginFocusNode2;
-  TextEditingController? emailLoginTextController2;
-  String? Function(BuildContext, String?)? emailLoginTextController2Validator;
+  FocusNode? emailLoginFocusNode;
+  TextEditingController? emailLoginTextController;
+  String? Function(BuildContext, String?)? emailLoginTextControllerValidator;
   // State field(s) for PasswordLogin widget.
   FocusNode? passwordLoginFocusNode;
   TextEditingController? passwordLoginTextController;
@@ -47,8 +47,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   @override
   void dispose() {
     tabBarController?.dispose();
-    emailLoginFocusNode1?.dispose();
-    emailLoginTextController1?.dispose();
+    emailSignUpFocusNode?.dispose();
+    emailSignUpTextController?.dispose();
 
     passwordsignupFocusNode?.dispose();
     passwordsignupTextController?.dispose();
@@ -56,8 +56,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     cnfrmpassSignupFocusNode?.dispose();
     cnfrmpassSignupTextController?.dispose();
 
-    emailLoginFocusNode2?.dispose();
-    emailLoginTextController2?.dispose();
+    emailLoginFocusNode?.dispose();
+    emailLoginTextController?.dispose();
 
     passwordLoginFocusNode?.dispose();
     passwordLoginTextController?.dispose();

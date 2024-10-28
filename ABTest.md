@@ -34,3 +34,52 @@ Include mockups showing:
 - New font design (Test Group)
 
 Each design should illustrate how key pages and components look under each variation, ensuring consistency and readability across devices.
+
+# Redwan Albadawi
+
+## A/B Test Name
+**"Enhanced Conversion: Sign In Button Color Change"**  
+This A/B test aims to determine if changing the color of the "Sign In" or "Login" button improves user interaction and increases sign-in rates.
+
+## User Story Number
+**US4**
+
+## Metrics
+Our team will use the **HEART** metrics to measure the success of this test:
+- **Happiness:** Positive feedback rates and NPS (Net Promoter Score) post-login.
+- **Engagement:** Percentage increase in login button clicks.
+- **Adoption:** New user registration rates driven by increased interaction with the login page.
+- **Retention:** Percentage of users returning to log in within 7 days.
+- **Task Success:** Conversion rate of users successfully logging in.
+
+## Hypothesis
+**Hypothesis:** Changing the button color to a high-contrast option (e.g., a bright blue or green) will increase button visibility and encourage more users to click on it, resulting in a higher sign-in rate.
+
+## Problem Statement
+**Problem:** User analytics show a high drop-off rate on the login page, indicating that users may not be engaging with the call-to-action button. This issue could stem from the button not standing out enough due to its current color, which might blend in with the overall design.
+
+**Impact:** Increasing user engagement with the login button can drive improved sign-in rates, which is crucial for user retention and the onboarding experience. 
+
+**Bottleneck Analysis:** By focusing on the visual aspect of the login button, this test isolates the design variable without modifying other login page elements, ensuring clear results about the button's visibility as the root cause.
+
+## Experiment Setup
+**Audience:** 
+- We will use **50% of the user base** for this experiment, with an equal split between two groups:
+  - **Control Group:** Users see the existing button color.
+  - **Experiment Group:** Users see the newly colored (higher contrast) button.
+
+**Firebase Analytics Tracking:**  
+- **Event Tracking:** Track "button_impression" and "button_click" events on the login page.
+- **Conversion Goal:** Monitor the "successful_login" event to measure the impact of the button color on actual sign-ins.
+
+## Variations
+**Control:** Current button color (e.g., gray).
+**Variation A:** New button color in high-contrast (e.g., blue or green).
+
+### Mockups
+1. **Control Design:** Gray button on standard background.
+2. **Variation A Design:** Blue/Green button on the same background for high visibility.
+
+> (Add mockups or diagrams here to visually depict the button color changes).
+
+By running this A/B test, we aim to gather insights on how small visual changes can impact user interaction and increase task completion on the login page.

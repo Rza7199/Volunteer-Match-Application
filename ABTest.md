@@ -83,7 +83,7 @@ Our team will use the **HEART** metrics to measure the success of this test:
 > (Add mockups or diagrams here to visually depict the button color changes).
 
 By running this A/B test, we aim to gather insights on how small visual changes can impact user interaction and increase task completion on the login page.
-
+# Adam Kuan
 # A/B Test: Logo Variations
 
 ### User Story Number

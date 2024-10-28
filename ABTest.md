@@ -83,3 +83,42 @@ Our team will use the **HEART** metrics to measure the success of this test:
 > (Add mockups or diagrams here to visually depict the button color changes).
 
 By running this A/B test, we aim to gather insights on how small visual changes can impact user interaction and increase task completion on the login page.
+
+# A/B Test: Logo Variations
+
+### User Story Number
+- **US5** (User Attraction)
+
+### Metrics (HEART Framework)
+1. **Happiness**: User satisfaction measured through feedback surveys on brand appeal.
+2. **Engagement**: Interactions such as logo clicks, homepage time spent, and initial page interactions.
+3. **Adoption**: Conversion rates for new users during their first session (e.g., registrations, initiating a volunteer match).
+4. **Retention**: Return visits within the first week, particularly to sections accessed through the logo.
+5. **Task Success**: Completion rate of key actions like signing up for volunteer matches or engaging with call-to-action elements.
+
+### Hypothesis
+*If the logo design is more visually appealing and aligns with the app's mission of community and volunteering, users will be more likely to engage with the platform, leading to increased new-user adoption rates.*
+
+### Problem We’re Solving
+User feedback indicates that the current logo may appear unappealing or unrelated to our mission, which can affect initial trust and engagement. This results in a high drop-off rate on the homepage, where users disengage before moving forward with the app. Since the logo is one of the first elements users see, enhancing its appeal could reduce drop-off rates and improve conversions.
+
+**Impact:** Increasing initial engagement with the logo could enhance user acquisition, targeting a 10-15% improvement in signup rates for volunteer matching services.
+
+### Experiment Setup
+- **Audience**: Allocate 50% of the user base to the test group and 50% to the control group.
+- **Tracking with Firebase Analytics**:
+  - Track engagement metrics like logo clicks, homepage dwell time, and interaction with CTAs.
+  - Monitor conversion rates from the homepage to registration or volunteer match pages.
+  - Measure retention by tracking the frequency of users returning within a 7-day period.
+  - Include a feedback survey for a subset of users to gauge logo appeal.
+
+### Variations
+1. **Control Group**: Current logo.
+2. **Test Group**: New mission-driven logo, featuring a simplified handshake icon and warm colors to reflect trust and inclusivity.
+
+### Mockups
+- **Control Group**: Display of the original logo on the homepage.
+- **Test Group**: Mockup of the mission-driven logo, showing updated colors, iconography, and overall layout on key pages.
+
+## Conclusion
+This A/B test will help determine if a refined, mission-driven logo enhances engagement, adoption, and retention rates. By setting up targeted tracking and using Firebase for detailed user insights, we aim to make informed decisions to improve user onboarding and interaction with the platform.

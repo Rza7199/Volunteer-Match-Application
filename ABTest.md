@@ -161,3 +161,50 @@ Visual Design for Variations
 Mockups:
 Control (A):
 Variation (B)
+
+# Jimmy Zhang
+# A/B Test Plan for "Light Mode vs. Dark Mode for Improved User Experience"
+
+### User Story Number
+- **US3 (User Interface Customization):** As a user, I want the option to switch between light mode and dark mode, enhancing my viewing comfort and preference during different lighting conditions.
+
+### Metrics
+Our team's HEART metrics for this A/B test include:
+- **Happiness:** User satisfaction measured through feedback ratings and reactions post-session.
+- **Engagement:** The number of sessions that include switching between light and dark mode.
+- **Adoption:** The number of users who activate dark mode within a certain period of app usage.
+- **Retention:** Percentage of users who frequently toggle or permanently stay on dark mode.
+- **Task Success:** The percentage of users who successfully find and use the dark mode option without additional guidance, indicating ease of use and accessibility.
+
+### Hypothesis
+We hypothesize that **adding a dark mode option will improve user engagement and satisfaction by reducing eye strain in low-light environments**. This change should also improve retention, as users will have a more personalized experience. Our problem stems from user feedback indicating discomfort and preference for an option that reduces brightness during nighttime or extended usage.
+
+*Problem:* 
+Users experience eye strain in the default light mode, especially when using the app in darker environments, leading to reduced session durations or app abandonment.
+
+*Hypothesis:* 
+If users have a toggle option to switch to dark mode, they are likely to experience improved comfort and satisfaction, leading to longer session durations and better engagement rates. We suspect that the lack of this feature has contributed to users leaving the app in favor of apps with a dark mode option.
+
+### Experiment Setup
+The experiment will use Firebase's Remote Config and A/B Testing capabilities to introduce a **Dark Mode Toggle** in the settings menu.
+
+#### Audience
+- **Target Audience:** 50% of our user base will participate in the experiment. Half of the participants will have the dark mode toggle option, while the other half will experience the standard light mode only.
+- **Rationale:** This balanced split will allow us to see the impact of dark mode on a diverse range of users, while also preserving a control group with no dark mode option.
+
+#### Tracking Using Firebase Analytics
+To measure the impact on HEART metrics, Firebase Analytics will track:
+- **Toggle Interactions:** Counts for users toggling dark mode on/off.
+- **Session Duration:** Length of sessions in dark mode vs. light mode.
+- **Feedback Score:** User ratings regarding the viewing experience post-session.
+- **Task Success:** Track how many users locate and activate the dark mode toggle within their first session after the update, indicating ease of discovery.
+### Variations
+
+1. **Control Group (50% of users):** Light mode only, with no dark mode option available in settings.
+2. **Variation Group (50% of users):** Light and dark mode toggle in settings. Users can activate dark mode to shift the UI colors to darker hues, which may reduce eye strain and improve comfort.
+
+### Conclusion
+This A/B test aims to determine if dark mode can increase user engagement, satisfaction, and retention by providing a more comfortable viewing experience. We will analyze data from Firebase Analytics on user engagement, task success rates, happiness scores, and retention rates post-implementation to determine the success of this feature.
+
+
+

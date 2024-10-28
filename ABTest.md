@@ -122,3 +122,42 @@ User feedback indicates that the current logo may appear unappealing or unrelate
 
 ## Conclusion
 This A/B test will help determine if a refined, mission-driven logo enhances engagement, adoption, and retention rates. By setting up targeted tracking and using Firebase for detailed user insights, we aim to make informed decisions to improve user onboarding and interaction with the platform.
+
+# Rami Aldine
+## A/B Test Name: Background Color Preference for Improved Engagement
+User Story Number
+US4 (Golden Path)
+
+## Metrics
+Our HEART metrics focus on Engagement and Satisfaction:
+
+### Engagement: Measured by Daily Active Users (DAUs) and the average time spent on a page.
+Satisfaction: Measured through click-through rates (CTR) on specific calls-to-action (CTAs).
+Hypothesis
+We believe that adjusting the background color of the main screen to a more visually appealing color (Variation B) will enhance user engagement and satisfaction. Specifically, we hypothesize that users will spend more time on the app and interact more with CTAs when the background is softer and less visually straining.
+
+### Problem Statement
+What Problem Are We Trying to Solve?
+Our app currently has a high bounce rate, with users spending less time on the home screen than expected. User feedback has suggested that the default background color (Variation A - light gray) may not be appealing or inviting, which could be contributing to lower engagement levels.
+
+### Impact
+Increasing user engagement on the main screen could lead to improved satisfaction, longer session times, and higher conversion on CTAs. Small increases in engagement may yield significant gains in user retention.
+
+## Experiment Setup
+We’ll use Firebase Remote Config to run this A/B test, targeting 50% of new users as the test audience while leaving the other 50% as the control group.
+
+Audience: New users will be divided randomly between:
+Control (A): Default background color (light gray)
+Variation (B): New background color (soft blue)
+Firebase Analytics Tracking:
+Screen View Duration: Track time spent on the main screen for each variation.
+CTA Clicks: Measure click-through rates on key buttons (e.g., “Get Started” or “Learn More”).
+User Feedback: Implement an optional feedback button asking about the visual appeal of the page.
+Variations
+Variation	Description
+Control (A)	Background color: Light Gray (#F5F5F5)
+Variation (B)	Background color: Soft Blue (#E8F4FD)
+Visual Design for Variations
+Mockups:
+Control (A):
+Variation (B)

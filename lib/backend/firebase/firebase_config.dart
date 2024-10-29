@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "volunteer-match-vpf09l",
             storageBucket: "volunteer-match-vpf09l.appspot.com",
             messagingSenderId: "62059142858",
-            appId: "1:62059142858:web:bf0c1c32a66851446c1e33"));
+            appId: "1:62059142858:web:bf0c1c32a66851446c1e33",
+            measurementId: "G-GHGV23XLNJ"));
   } else {
     await Firebase.initializeApp();
   }

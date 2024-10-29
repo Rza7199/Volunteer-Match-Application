@@ -50,6 +50,26 @@ class UserInfoRecord extends FirestoreRecord {
   int get surveyScore => _surveyScore ?? 0;
   bool hasSurveyScore() => _surveyScore != null;
 
+  // "age" field.
+  String? _age;
+  String get age => _age ?? '';
+  bool hasAge() => _age != null;
+
+  // "city" field.
+  String? _city;
+  String get city => _city ?? '';
+  bool hasCity() => _city != null;
+
+  // "state" field.
+  String? _state;
+  String get state => _state ?? '';
+  bool hasState() => _state != null;
+
+  // "bio" field.
+  String? _bio;
+  String get bio => _bio ?? '';
+  bool hasBio() => _bio != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -58,6 +78,10 @@ class UserInfoRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _surveyScore = castToType<int>(snapshotData['survey_score']);
+    _age = snapshotData['age'] as String?;
+    _city = snapshotData['city'] as String?;
+    _state = snapshotData['state'] as String?;
+    _bio = snapshotData['bio'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -102,6 +126,10 @@ Map<String, dynamic> createUserInfoRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   int? surveyScore,
+  String? age,
+  String? city,
+  String? state,
+  String? bio,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -112,6 +140,10 @@ Map<String, dynamic> createUserInfoRecordData({
       'created_time': createdTime,
       'phone_number': phoneNumber,
       'survey_score': surveyScore,
+      'age': age,
+      'city': city,
+      'state': state,
+      'bio': bio,
     }.withoutNulls,
   );
 
@@ -129,7 +161,11 @@ class UserInfoRecordDocumentEquality implements Equality<UserInfoRecord> {
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.surveyScore == e2?.surveyScore;
+        e1?.surveyScore == e2?.surveyScore &&
+        e1?.age == e2?.age &&
+        e1?.city == e2?.city &&
+        e1?.state == e2?.state &&
+        e1?.bio == e2?.bio;
   }
 
   @override
@@ -140,7 +176,11 @@ class UserInfoRecordDocumentEquality implements Equality<UserInfoRecord> {
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.surveyScore
+        e?.surveyScore,
+        e?.age,
+        e?.city,
+        e?.state,
+        e?.bio
       ]);
 
   @override

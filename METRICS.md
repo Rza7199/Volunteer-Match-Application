@@ -9,3 +9,8 @@
 # CTR Tracking
 
 -Track impressions and clicks for "Sign Up" and "Login" buttons to calculate CTR. Save **button_impression** and **button_click** events in Firebase Analytics.
+
+### Adoptation
+- Firebase automatically track adoptation with the default events, such as first_open and screen_view.
+- First_open open tracks the number of new users start using your app
+- screen_view track the those user time spend on the app.

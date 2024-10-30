@@ -163,10 +163,10 @@ Control (A):
 Variation (B)
 
 # Jimmy Zhang
-# A/B Test Plan for "Light Mode vs. Dark Mode for Improved User Experience"
+## A/B Test- "Light Mode vs. Dark Mode for Improved User Experience"
 
 ### User Story Number
-- **US3 (User Interface Customization):** As a user, I want the option to switch between light mode and dark mode, enhancing my viewing comfort and preference during different lighting conditions.
+- **US5 (User Interface Customization):** As a user, I want the option to switch between light mode and dark mode, enhancing my viewing comfort and preference during different lighting conditions.
 
 ### Metrics
 Our team's HEART metrics for this A/B test include:

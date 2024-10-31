@@ -1,0 +1,16 @@
+# Correct name and email for the same person using different emails
+John Doe <john.doe@example.com> <johnny.doe@oldmail.com>
+John Doe <john.doe@example.com> <jdoe123@gmail.com>
+
+# Correct only the email, but keep the name as is
+<jane.doe@example.com> <jane_d@workmail.com>
+
+# Correct only the name, email remains unchanged
+Jane Doe <jane@doemail.com> Jane D. <jane@doemail.com>
+
+# Specify both name and email change
+John Smith <john.smith@company.com> John S. <john.smith@gmail.com>
+
+# Multiple corrections for one person
+Jane Developer <jane.dev@company.com> <jane123@personalmail.com>
+Jane Developer <jane.dev@company.com> Jane <jane@freelance.com>

@@ -602,7 +602,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               'LoginButton_navigate_to');
 
                                           context.pushNamedAuth(
-                                              'DUMMYPAGE', context.mounted);
+                                              'LoggedIn', context.mounted);
                                         },
                                         text: 'Sign Up',
                                         options: FFButtonOptions(
@@ -898,8 +898,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             return;
                                           }
 
-                                          context.goNamedAuth(
-                                              'LoggedIn', context.mounted);
+                                          logFirebaseEvent(
+                                              'LoginButton_navigate_to');
+
+                                          context.pushNamedAuth(
+                                              'DUMMYPAGE', context.mounted);
                                         },
                                         text: 'Log In',
                                         options: FFButtonOptions(

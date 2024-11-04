@@ -14,3 +14,7 @@
 - Firebase automatically track adoptation with the default events, such as first_open and screen_view.
 - First_open open tracks the number of new users start using your app
 - screen_view track the those user time spend on the app.
+
+## DAU (Daily Active Users)
+- Collecting DAU using built-in Firebase Analytics to track daily user engagement within the app.
+- Firebase Analytics automatically logs daily sessions, enabling the identification of active users and analysis of DAU trends over time.

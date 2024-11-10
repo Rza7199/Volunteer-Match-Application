@@ -130,7 +130,7 @@ class _NPSSurveyWidgetState extends State<NPSSurveyWidget> {
                                   ));
                                   logFirebaseEvent('Button_navigate_to');
 
-                                  context.pushNamed('DUMMYPAGE');
+                                  context.pushNamed('UIUX');
                                 },
                                 text: 'I\'m Done!',
                                 options: FFButtonOptions(

@@ -43,6 +43,36 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
+  String _statename = '';
+  String get statename => _statename;
+  set statename(String value) {
+    _statename = value;
+  }
+
+  String _Organization = '';
+  String get Organization => _Organization;
+  set Organization(String value) {
+    _Organization = value;
+  }
+
+  String _Description = '';
+  String get Description => _Description;
+  set Description(String value) {
+    _Description = value;
+  }
+
+  int _currentIndex = 0;
+  int get currentIndex => _currentIndex;
+  set currentIndex(int value) {
+    _currentIndex = value;
+  }
+
+  int _maxIndex = 2;
+  int get maxIndex => _maxIndex;
+  set maxIndex(int value) {
+    _maxIndex = value;
+  }
+
   List<FilterColumnStruct> _volunteerWorkFilter = [];
   List<FilterColumnStruct> get volunteerWorkFilter => _volunteerWorkFilter;
   set volunteerWorkFilter(List<FilterColumnStruct> value) {

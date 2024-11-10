@@ -51,8 +51,8 @@ class UserInfoRecord extends FirestoreRecord {
   bool hasSurveyScore() => _surveyScore != null;
 
   // "age" field.
-  String? _age;
-  String get age => _age ?? '';
+  int? _age;
+  int get age => _age ?? 0;
   bool hasAge() => _age != null;
 
   // "city" field.
@@ -78,7 +78,7 @@ class UserInfoRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _surveyScore = castToType<int>(snapshotData['survey_score']);
-    _age = snapshotData['age'] as String?;
+    _age = castToType<int>(snapshotData['age']);
     _city = snapshotData['city'] as String?;
     _state = snapshotData['state'] as String?;
     _bio = snapshotData['bio'] as String?;
@@ -126,7 +126,7 @@ Map<String, dynamic> createUserInfoRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   int? surveyScore,
-  String? age,
+  int? age,
   String? city,
   String? state,
   String? bio,

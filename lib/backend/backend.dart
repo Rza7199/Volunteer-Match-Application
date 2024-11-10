@@ -6,6 +6,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
 import 'schema/user_info_record.dart';
+import 'schema/organization_profile_record.dart';
+import 'schema/volunteer_work_list_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -15,6 +17,8 @@ export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
 export 'schema/user_info_record.dart';
+export 'schema/organization_profile_record.dart';
+export 'schema/volunteer_work_list_record.dart';
 
 /// Functions to query UserInfoRecords (as a Stream and as a Future).
 Future<int> queryUserInfoRecordCount({
@@ -48,6 +52,80 @@ Future<List<UserInfoRecord>> queryUserInfoRecordOnce({
     queryCollectionOnce(
       UserInfoRecord.collection,
       UserInfoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query OrganizationProfileRecords (as a Stream and as a Future).
+Future<int> queryOrganizationProfileRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      OrganizationProfileRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<OrganizationProfileRecord>> queryOrganizationProfileRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      OrganizationProfileRecord.collection,
+      OrganizationProfileRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<OrganizationProfileRecord>> queryOrganizationProfileRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      OrganizationProfileRecord.collection,
+      OrganizationProfileRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query VolunteerWorkListRecords (as a Stream and as a Future).
+Future<int> queryVolunteerWorkListRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      VolunteerWorkListRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<VolunteerWorkListRecord>> queryVolunteerWorkListRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      VolunteerWorkListRecord.collection,
+      VolunteerWorkListRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<VolunteerWorkListRecord>> queryVolunteerWorkListRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      VolunteerWorkListRecord.collection,
+      VolunteerWorkListRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

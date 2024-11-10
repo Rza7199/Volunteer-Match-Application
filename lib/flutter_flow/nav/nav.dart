@@ -74,18 +74,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const LoggedInWidget() : const HomePageWidget(),
+          appStateNotifier.loggedIn ? const LoggedInWidget() : const UserSignUpWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const LoggedInWidget() : const HomePageWidget(),
+              appStateNotifier.loggedIn ? const LoggedInWidget() : const UserSignUpWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          name: 'UserSignUp',
+          path: '/userSignUp',
+          builder: (context, params) => const UserSignUpWidget(),
         ),
         FFRoute(
           name: 'LoggedIn',
@@ -93,19 +93,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const LoggedInWidget(),
         ),
         FFRoute(
-          name: 'DUMMYPAGE',
-          path: '/dummypage',
-          builder: (context, params) => const DummypageWidget(),
-        ),
-        FFRoute(
           name: 'NPSSurvey',
           path: '/nPSSurvey',
           builder: (context, params) => const NPSSurveyWidget(),
         ),
         FFRoute(
+          name: 'FilterPage',
+          path: '/filterPage',
+          builder: (context, params) => const FilterPageWidget(),
+        ),
+        FFRoute(
           name: 'UIUX',
           path: '/uiux',
           builder: (context, params) => const UiuxWidget(),
+        ),
+        FFRoute(
+          name: 'Settings',
+          path: '/settings',
+          builder: (context, params) => const SettingsWidget(),
+        ),
+        FFRoute(
+          name: 'Organizations',
+          path: '/organizations',
+          builder: (context, params) => const OrganizationsWidget(),
+        ),
+        FFRoute(
+          name: 'Help',
+          path: '/help',
+          builder: (context, params) => const HelpWidget(),
+        ),
+        FFRoute(
+          name: 'About',
+          path: '/about',
+          builder: (context, params) => const AboutWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage',
+          path: '/homePage',
+          builder: (context, params) => const HomePageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -278,7 +303,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/homePage';
+            return '/userSignUp';
           }
           return null;
         },

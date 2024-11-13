@@ -69,18 +69,21 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const LoggedInWidget() : const UserSignUpWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? const LeftLoggedInWidget()
+          : const AssignRoleWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const LoggedInWidget() : const UserSignUpWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? const LeftLoggedInWidget()
+              : const AssignRoleWidget(),
         ),
         FFRoute(
           name: 'UserSignUp',
@@ -88,9 +91,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const UserSignUpWidget(),
         ),
         FFRoute(
-          name: 'LoggedIn',
-          path: '/loggedIn',
-          builder: (context, params) => const LoggedInWidget(),
+          name: 'profileCreation',
+          path: '/profileCreation',
+          builder: (context, params) => const ProfileCreationWidget(),
         ),
         FFRoute(
           name: 'NPSSurvey',
@@ -113,9 +116,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SettingsWidget(),
         ),
         FFRoute(
-          name: 'Organizations',
-          path: '/organizations',
-          builder: (context, params) => const OrganizationsWidget(),
+          name: 'OrgPostListing',
+          path: '/orgPostListing',
+          builder: (context, params) => const OrgPostListingWidget(),
         ),
         FFRoute(
           name: 'Help',
@@ -128,9 +131,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AboutWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          name: 'assignRole',
+          path: '/assignRole',
+          builder: (context, params) => const AssignRoleWidget(),
+        ),
+        FFRoute(
+          name: 'leftLoggedIn',
+          path: '/leftLoggedIn',
+          builder: (context, params) => const LeftLoggedInWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -303,7 +311,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/userSignUp';
+            return '/assignRole';
           }
           return null;
         },

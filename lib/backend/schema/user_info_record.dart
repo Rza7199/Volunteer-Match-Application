@@ -70,6 +70,16 @@ class UserInfoRecord extends FirestoreRecord {
   String get bio => _bio ?? '';
   bool hasBio() => _bio != null;
 
+  // "is_profile_created" field.
+  bool? _isProfileCreated;
+  bool get isProfileCreated => _isProfileCreated ?? false;
+  bool hasIsProfileCreated() => _isProfileCreated != null;
+
+  // "role" field.
+  String? _role;
+  String get role => _role ?? '';
+  bool hasRole() => _role != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -82,6 +92,8 @@ class UserInfoRecord extends FirestoreRecord {
     _city = snapshotData['city'] as String?;
     _state = snapshotData['state'] as String?;
     _bio = snapshotData['bio'] as String?;
+    _isProfileCreated = snapshotData['is_profile_created'] as bool?;
+    _role = snapshotData['role'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +142,8 @@ Map<String, dynamic> createUserInfoRecordData({
   String? city,
   String? state,
   String? bio,
+  bool? isProfileCreated,
+  String? role,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +158,8 @@ Map<String, dynamic> createUserInfoRecordData({
       'city': city,
       'state': state,
       'bio': bio,
+      'is_profile_created': isProfileCreated,
+      'role': role,
     }.withoutNulls,
   );
 
@@ -165,7 +181,9 @@ class UserInfoRecordDocumentEquality implements Equality<UserInfoRecord> {
         e1?.age == e2?.age &&
         e1?.city == e2?.city &&
         e1?.state == e2?.state &&
-        e1?.bio == e2?.bio;
+        e1?.bio == e2?.bio &&
+        e1?.isProfileCreated == e2?.isProfileCreated &&
+        e1?.role == e2?.role;
   }
 
   @override
@@ -180,7 +198,9 @@ class UserInfoRecordDocumentEquality implements Equality<UserInfoRecord> {
         e?.age,
         e?.city,
         e?.state,
-        e?.bio
+        e?.bio,
+        e?.isProfileCreated,
+        e?.role
       ]);
 
   @override

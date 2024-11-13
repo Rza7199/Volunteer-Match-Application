@@ -177,7 +177,7 @@ class _UiuxWidgetState extends State<UiuxWidget> {
                               'UIUX_PAGE_ORGANIZATIONS_BTN_ON_TAP');
                           logFirebaseEvent('Button_navigate_to');
 
-                          context.pushNamed('Organizations');
+                          context.pushNamed('OrgPostListing');
                         },
                         text: 'Organizations',
                         icon: const Icon(
@@ -360,7 +360,7 @@ class _UiuxWidgetState extends State<UiuxWidget> {
           child: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xFFEE3157), Color(0xDFB60F9B)],
+                colors: [Color(0xFFEE3157), Color(0x67C11EC3)],
                 stops: [0.0, 1.0],
                 begin: AlignmentDirectional(0.0, -1.0),
                 end: AlignmentDirectional(0, 1.0),
@@ -376,10 +376,12 @@ class _UiuxWidgetState extends State<UiuxWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: FlutterFlowIconButton(
+                      key: const ValueKey('OpenDrawerButton_xgvb'),
                       borderColor: Colors.transparent,
                       borderRadius: 8.0,
                       buttonSize: 40.0,
                       icon: const Icon(
+                        key: ValueKey('OpenDrawerButton_xgvb'),
                         Icons.view_sidebar,
                         color: Colors.black,
                         size: 24.0,

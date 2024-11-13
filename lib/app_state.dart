@@ -73,7 +73,10 @@ class FFAppState extends ChangeNotifier {
     _maxIndex = value;
   }
 
-  List<FilterColumnStruct> _volunteerWorkFilter = [];
+  List<FilterColumnStruct> _volunteerWorkFilter = [
+    FilterColumnStruct.fromSerializableMap(jsonDecode(
+        '{\"key\":\"Name\",\"value\":\"value\",\"options\":\"[\\\"A-G\\\",\\\"H-Z\\\"]\"}'))
+  ];
   List<FilterColumnStruct> get volunteerWorkFilter => _volunteerWorkFilter;
   set volunteerWorkFilter(List<FilterColumnStruct> value) {
     _volunteerWorkFilter = value;

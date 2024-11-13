@@ -47,7 +47,14 @@ class _HelpWidgetState extends State<HelpWidget> {
             constraints: const BoxConstraints(
               minHeight: double.infinity,
             ),
-            decoration: const BoxDecoration(),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFE73659), Color(0x67C11EC3)],
+                stops: [0.0, 1.0],
+                begin: AlignmentDirectional(0.0, -1.0),
+                end: AlignmentDirectional(0, 1.0),
+              ),
+            ),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,

@@ -42,52 +42,63 @@ class _AboutWidgetState extends State<AboutWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Align(
-                alignment: const AlignmentDirectional(0.9, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent('ABOUT_PAGE_Icon_4mau0kev_ON_TAP');
-                      logFirebaseEvent('Icon_navigate_to');
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFE73659), Color(0x67C11EC3)],
+                stops: [0.0, 1.0],
+                begin: AlignmentDirectional(0.0, -1.0),
+                end: AlignmentDirectional(0, 1.0),
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: const AlignmentDirectional(0.9, 0.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        logFirebaseEvent('ABOUT_PAGE_Icon_4mau0kev_ON_TAP');
+                        logFirebaseEvent('Icon_navigate_to');
 
-                      context.pushNamed('UIUX');
-                    },
-                    child: Icon(
-                      Icons.close,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
+                        context.pushNamed('UIUX');
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Text(
-                'About Us',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
-                      fontSize: 40.0,
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  'Welcome to VolunteerMatchApp, a platform designed to make giving back simple, meaningful, and accessible for everyone. Our mission is to connect individuals with volunteer opportunities that align with their skills, passions, and availability, creating a community of changemakers ready to make a positive impact.\n\nAt VolunteerMatchApp, we believe that everyone has something valuable to offer. Whether you\'re a student, professional, retiree, or just someone looking to make a difference, we make it easy for you to find and engage in volunteer projects that suit your unique interests and expertise. Our platform allows organizations to list their volunteer needs, enabling volunteers to browse, filter, and apply to opportunities in their local area or online.',
-                  textAlign: TextAlign.center,
+                Text(
+                  'About Us',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
+                        fontSize: 40.0,
                         letterSpacing: 0.0,
                       ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Text(
+                    'Welcome to VolunteerMatchApp, a platform designed to make giving back simple, meaningful, and accessible for everyone. Our mission is to connect individuals with volunteer opportunities that align with their skills, passions, and availability, creating a community of changemakers ready to make a positive impact.\n\nAt VolunteerMatchApp, we believe that everyone has something valuable to offer. Whether you\'re a student, professional, retiree, or just someone looking to make a difference, we make it easy for you to find and engage in volunteer projects that suit your unique interests and expertise. Our platform allows organizations to list their volunteer needs, enabling volunteers to browse, filter, and apply to opportunities in their local area or online.',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

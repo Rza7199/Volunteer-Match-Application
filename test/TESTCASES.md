@@ -5,3 +5,5 @@
 [Link to Template Slide](https://docs.google.com/presentation/d/1wmD3rixY1m-JssFf2RhO0anKqzVy8UwXhcXhaoBAcMw/edit#slide=id.p) US3: Backend Management
 
 [Link to Template Slide](https://docs.google.com/presentation/d/1AluC70jN2s0eIguoxqZjWuRmw2iu0XUDq5HzI0keQ9o/edit?usp=sharing) US4: UI/UX
+
+[Link to Template Slide](https://docs.google.com/presentation/d/19AjdBxv3921m-p0wk2AN1unw68iDRaw41PB1_T1z2ZY/edit?usp=sharing) US5: Profile Creation

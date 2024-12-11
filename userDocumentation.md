@@ -2,11 +2,9 @@
 
 ## Welcome to Volunteer Match
 
-### Short Description (80 characters or less)
-
 Easily connect with volunteer opportunities that match your skills and interests.
 
-### Full Description (up to 4,000 characters)
+### Full Description 
 
 Volunteer Match is your ultimate app for discovering, exploring, and participating in meaningful volunteer opportunities. Whether you're looking to give back to your community, support a cause close to your heart, or build new skills, Volunteer Match simplifies the process and connects you with organizations in need of your unique talents. With a focus on accessibility and impact, our platform empowers both volunteers and organizations to collaborate in creating positive change.
 
